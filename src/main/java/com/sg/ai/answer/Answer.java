@@ -1,5 +1,6 @@
-package com.sg.ai;
+package com.sg.ai.answer;
 
+import com.sg.ai.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

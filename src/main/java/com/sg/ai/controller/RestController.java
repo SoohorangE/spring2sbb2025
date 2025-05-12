@@ -1,6 +1,6 @@
 package com.sg.ai.controller;
 
-import com.sg.ai.domain.User;
+import com.sg.ai.user.User;
 import org.springframework.web.bind.annotation.*;
 
 @org.springframework.web.bind.annotation.RestController
