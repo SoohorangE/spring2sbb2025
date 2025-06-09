@@ -2,6 +2,9 @@ package com.sg.ai.question;
 
 import com.sg.ai.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,9 +18,10 @@ public class QuestionService {
 
     private final QuestionRepository questionRepository;
 
-    public List<Question> getList()
+    public Page<Question> getList(int page)
     {
-        return questionRepository.findAll();
+        Pageable pageable = PageRequest.of(page, 10);
+        return questionRepository.findAll(pageable);
     }
 
     public Question getQuestion(Integer id)

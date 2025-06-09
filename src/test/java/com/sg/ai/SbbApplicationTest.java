@@ -4,6 +4,7 @@ import com.sg.ai.answer.Answer;
 import com.sg.ai.question.Question;
 import com.sg.ai.answer.AnswerRepository;
 import com.sg.ai.question.QuestionRepository;
+import com.sg.ai.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,9 +14,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@SpringBootTest
-//class SbbApplicationTest {
-//
+@SpringBootTest
+class SbbApplicationTest {
+
 //    @Autowired
 //    private QuestionRepository questionRepository;
 //
@@ -46,4 +47,21 @@ import static org.junit.jupiter.api.Assertions.*;
 //        answerRepository.save(a);
 //
 //    }
-//}
+
+    // 페이지 기능을 구현하기 위해, 300개의 게시물을 만듬
+    @Autowired
+    private QuestionService questionService;
+
+    @Test
+    void testPage()
+    {
+        for(int i=1;i<=300;i++)
+        {
+            String subject = String.format("테스트용으로 만들었습니다 : [%03d]", i);
+            String content = "별 내용 없습니다. 2025년 6월 9일 마지막 수업";
+
+            this.questionService.create(subject, content);
+
+        }
+    }
+}
